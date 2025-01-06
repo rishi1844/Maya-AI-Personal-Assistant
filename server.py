@@ -16,6 +16,12 @@ if not API_KEY:
     raise ValueError("API Key not found. Set the GENAI_API_KEY environment variable.")
 genai.configure(api_key=API_KEY)
 
+# Root route
+@app.route('/')
+def home():
+    return "Welcome to the Flask App!", 200
+
+# Route for generating content
 @app.route('/generate-content', methods=['POST'])
 def generate_content():
     data = request.json
