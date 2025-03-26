@@ -10,7 +10,7 @@ const muteButton = document.getElementById('muteButton');
 
 
 // Base URL for backend API
-const BACKEND_URL = "https://maya-ai-personal-assistant.vercel.app/generate-content"; // Python backend
+const BACKEND_URL = "https://maya-ai-personal-assistant.onrender.com/generate-content";
 
 let isMuted = false; // Global mute flag
 
