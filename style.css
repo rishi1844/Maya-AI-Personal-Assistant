@@ -11,7 +11,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url('Ai\ bot.jpg');
+    background-image: url('/img/Ai bot.jpg');
     color: white;
     background-size: cover;
     background-position: center;
@@ -435,83 +435,77 @@ body {
     font-weight: bold;
 }
 
-
 /* Responsive design */
+
+@media (max-width: 1500px) {
+    .search-container{
+        margin-bottom: 5px;
+    }
+}
+
+/* Tablets and small desktops */
 @media (max-width: 768px) {
     body {
-        height: 120vh;
+        height: 110vh;
     }
 
     .sidebar {
-        width: 200px; /* Adjust sidebar width for smaller screens */
+        width: 200px;
     }
 
     .hamburger {
-        width: 35px; /* Adjust hamburger size */
+        width: 35px;
         height: 35px;
     }
 
-    .sidebar li {
-        font-size: 14px; /* Reduce font size */
-    }
-
+    .sidebar li,
     .sidebar .new-chat-btn {
         font-size: 14px;
-        padding: 8px;
     }
 
-    .chat-container{
+    .chat-container {
         width: 75%;
+        height: 40%;
     }
 
-    .text{
+    .text {
         font-size: 1.06rem;
     }
 
     .search-container {
-        flex-direction: column; /* Stack items vertically */
+        flex-direction: column;
         align-items: stretch;
         border-radius: 20px;
         padding: 15px;
-        /* margin-top: 105px; */
     }
 
-    .btn{
+    .btn {
         width: 60%;
         padding: 6px;
         font-size: 15px;
         margin-top: -3px;
     }
 
-    .btn:hover {
-        /* box-shadow: 2px 2px 10px rgb(201, 41, 116), 2px 2px 10px rgb(21, 145, 207); */
-        letter-spacing: 1px;
-    }
- 
-    .container{
+    .container {
         width: 75%;
         height: 225px;
-        padding: 0px;
         margin-top: 21px;
     }
 
-    .container h1{
+    .container h1 {
         font-size: 18px;
     }
 
-    span#jr, #vi{
+    span#jr, span#vi {
         font-size: 30px;
     }
 
-    .chat-container {
-        height: 40%;
-    }
-
     .controls button {
-        padding: 5px; /* Slightly smaller buttons */
+        padding: 5px;
     }
 }
 
+/* Smaller tablets and large phones */
 @media (max-width: 590px) {
     body {
         height: 100vh;
@@ -521,20 +515,21 @@ body {
         height: 50%;
     }
 
-    .container p{
-        /* padding: 15px; */
-        font-size: 17px;
+    .container {
+        width: 90%;
+        padding: 10px;
+        margin-top: 10px;
     }
 
     .container h1 {
         font-size: 15px;
     }
 
-    span#jr, #vi{
+    span#jr, span#vi {
         font-size: 20px;
     }
 
-    .btn{
+    .btn {
         width: 80%;
         margin-top: 10px;
     }
@@ -545,15 +540,14 @@ body {
     }
 
     .search-container {
-        flex-direction: column; /* Stack items vertically */
+        flex-direction: column;
         align-items: stretch;
         border-radius: 20px;
         padding: 15px;
     }
 
     .search-bar {
-        margin-right: 0;
-        margin-bottom: 10px; /* Space between input and button */
+        margin-bottom: 10px;
     }
 
     .send-btn {
@@ -561,169 +555,117 @@ body {
     }
 
     .controls {
-        gap: 42px; /* Even smaller spacing for small devices */
-        justify-content: space-evenly; /* Spread buttons evenly */
+        gap: 42px;
+        justify-content: space-evenly;
     }
 
-    .controls button {
-        padding: 6px; /* Smaller button size for small screens */
-    }
-
-    .footer{
+    .footer {
         display: none;
     }
 }
 
+/* Mobile screens */
 @media (max-width: 480px) {
-    body {
-        height: 100vh;
-    }
-
     .sidebar {
-        width: 150px; /* Narrower sidebar for extra-small screens */
+        width: 150px;
     }
 
     .hamburger {
-        width: 30px; /* Smaller hamburger */
+        width: 30px;
         height: 30px;
     }
 
-    .sidebar li {
-        font-size: 12px; /* Smaller font size */
-    }
-
+    .sidebar li,
     .sidebar .new-chat-btn {
         font-size: 12px;
-        padding: 6px;
     }
 
     .chat-container {
         height: 50%;
     }
 
-    /* .text{
-        font-size: 1.1rem;
-    } */
-
-    .container p{
-        /* padding: 15px; */
-        font-size: 17px;
-    }
-
     .container h1 {
         font-size: 15px;
     }
 
-    span#jr, #vi{
+    span#jr, span#vi {
         font-size: 20px;
     }
 
-    .btn{
+    .btn {
         width: 80%;
-        margin-top: 10px;
-    }
-
-    .mute-btn img {
-        width: 25px;
-        height: 25px;
-    }
-
-    .search-container {
-        flex-direction: column; /* Stack items vertically */
-        align-items: stretch;
-        border-radius: 20px;
-        padding: 15px;
-    }
-
-    .search-bar {
-        margin-right: 0;
-        margin-bottom: 10px; /* Space between input and button */
-    }
-
-    .send-btn {
-        padding: 10px 15px;
-    }
-
-    .controls {
-        gap: 42px; /* Even smaller spacing for small devices */
-        justify-content: space-evenly; /* Spread buttons evenly */
     }
 
     .controls button {
-        padding: 6px; /* Smaller button size for small screens */
-    }
-
-    .footer{
-        display: none;
+        padding: 6px;
     }
 }
 
-
+/* Extra small screens */
 @media (max-width: 360px) {
     body {
-        height: 140vh; /* Adjusted for longer pages */
+        height: 130vh;
     }
 
     .chat-container {
-        height: 35%; /* Reduced height to fit smaller screens */
-        width: 90%;  /* Narrower chat container for extra-small devices */
-        font-size: 0.9rem; /* Slightly smaller text size */
+        height: 35%;
+        width: 90%;
+        font-size: 0.9rem;
     }
 
     .text {
-        font-size: 1rem; /* Reduce text size for readability */
+        font-size: 1rem;
     }
 
     .container {
-        width: 90%; /* Take most of the width on smaller screens */
+        width: 90%;
         padding: 10px;
-        margin-top: 10px;
     }
 
     .container h1 {
-        font-size: 14px; /* Reduce heading size */
+        font-size: 14px;
     }
 
     span#jr, span#vi {
-        font-size: 18px; /* Smaller size for special spans */
+        font-size: 18px;
     }
 
     .container p {
-        font-size: 15px; /* Reduced paragraph text size */
+        font-size: 15px;
     }
 
     .btn {
-        width: 90%; /* Buttons take full width */
-        font-size: 14px; /* Smaller button font size */
+        width: 90%;
+        font-size: 14px;
     }
 
     .mute-btn img {
-        width: 20px; /* Smaller mute button icon */
+        width: 20px;
         height: 20px;
     }
 
     .search-container {
-        width: 75%; /* Full width for search container */
-        flex-direction: column; /* Stack vertically */
+        width: 75%;
+        flex-direction: column;
         padding: 10px;
     }
 
     .search-bar {
-        font-size: 16px; /* Smaller input font size */
-        margin-bottom: 10px; /* Space between input and button */
+        font-size: 16px;
+        margin-bottom: 10px;
     }
 
     .send-btn {
-        padding: 8px 10px; /* Smaller button padding */
+        padding: 8px 10px;
         font-size: 14px;
     }
 
     .notification {
-        font-size: 14px; /* Smaller font for notifications */
-        padding: 8px 15px; /* Reduced padding */
+        font-size: 14px;
+        padding: 8px 15px;
     }
 
-    .footer{
+    .footer {
         display: none;
     }
 }

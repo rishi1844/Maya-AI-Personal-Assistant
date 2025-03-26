@@ -84,13 +84,13 @@ muteButton.addEventListener('click', () => {
     isMuted = !isMuted; // Toggle mute state
 
     if (isMuted) {
-        muteButton.innerHTML = '<img src="mute.png" alt="Mute">';
+        muteButton.innerHTML = '<img src="img/mute.png" alt="Mute">';
         if (window.speechSynthesis.speaking) {
             window.speechSynthesis.pause(); // Pause speech synthesis
             isPaused = true; // Mark speech as paused
         }
     } else {
-        muteButton.innerHTML = '<img src="unmute.png" alt="Unmute">';
+        muteButton.innerHTML = '<img src="img/mute1.png" alt="Unmute">';
         if (isPaused) {
             window.speechSynthesis.resume(); // Resume speech synthesis
             isPaused = false; // Reset paused state
@@ -320,7 +320,7 @@ if (SpeechRecognition) {
     recognition.onend = () => {
         btn.innerText = "";
         const img = document.createElement("img");
-        img.src = "mic.svg";
+        img.src = "img/mic.svg";
         btn.appendChild(img);
         const text = document.createTextNode(" Start Listening");
         btn.appendChild(text);
@@ -583,7 +583,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Delete button element
         const deleteBtn = document.createElement("button");
         deleteBtn.classList.add("delete-btn");
-        deleteBtn.innerHTML = `<img src="delete.svg" alt="Delete Chat">`;
+        deleteBtn.innerHTML = `<img src="img/delete.svg" alt="Delete Chat">`;
         deleteBtn.addEventListener("click", (e) => {
             e.stopPropagation(); // Prevent triggering the chat switch
             deleteChat(chatId, li);
