@@ -110,6 +110,14 @@ body {
     height: 30px;
 }
 
+@media (max-width: 768px) {
+
+    .hamburger img {
+        width: 20px;
+        height: 20px;
+    }
+}    
+
 .delete-btn img {
     width: 16px;
     height: 16px;
@@ -669,3 +677,5 @@ body {
         display: none;
     }
 }
+
+

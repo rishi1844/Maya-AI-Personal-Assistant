@@ -10,7 +10,7 @@ const muteButton = document.getElementById('muteButton');
 
 
 // Base URL for backend API
-const BACKEND_URL = "http://127.0.0.1:5000/generate-content"; // Python backend
+const BACKEND_URL = "https://maya-ai-personal-assistant.onrender.com/generate-content";
 
 let isMuted = false; // Global mute flag
 
@@ -121,6 +121,14 @@ window.addEventListener('load', () => {
 
 async function getApi(userMessage, aiChatBox) {
     try {
+        // Check for YouTube commands
+        if (userMessage.toLowerCase().includes("youtube")) {
+            handleYouTubeCommand(userMessage);
+            aiChatBox.innerHTML = "";
+            aiChatBox.style.background = "transparent"; 
+            return;
+        }
+
         // Make the API request
         let response = await fetch(BACKEND_URL, {
             method: "POST",
@@ -129,56 +137,80 @@ async function getApi(userMessage, aiChatBox) {
         });
 
         let data = await response.json();
+        console.log("API Response:", data.response); // Debugging
 
-        if (data.response && data.response.introduction) {
-            const { introduction, sections } = data.response;
-        
-            // Format the response for display
-            let formattedResponse = `
-            <div>
-                <strong>
-                    <span style="color: #d46a6a; font-size: 1.5rem; font-weight: bold; text-decoration: underline;">Introduction:</span>
-                </strong> ${introduction}
-            </div>
-            `;
-        
-            if (sections && sections.length > 0) {
-                sections.forEach((section) => {
-                    // Only add the section if content is available
-                    if (section.content) {
-                        formattedResponse += `
-                        <div>
-                            <h3>
-                                <span style="color: #4CAF50; font-size: 1.2rem; text-decoration: underline;">${section.title}:</span>
-                            </h3>
-                            <div>${section.content}</div>
-                        </div>
-                        `;
-                    }
-                });
-            }
-        
-            // Update AI chatbox with formatted HTML
-            aiChatBox.querySelector(".text").innerHTML = formattedResponse;
-        
-            // Scroll up old responses
-            const chatContainer = document.querySelector(".chat-container");
-            chatContainer.scrollTop = chatContainer.scrollHeight - chatContainer.clientHeight;
-        
-            // Speak only the introduction
-            speak(introduction);
-        } 
-        else {
-            aiChatBox.querySelector(".text").textContent = data.response || "No response received.";
-            speak(data.response || "No response received.");
+        if (data.response) {
+            let textContent = data.response.introduction || data.response;
+            aiChatBox.querySelector(".text").textContent = textContent;
+            
+            // Auto-scroll to the latest message
+            autoScroll();
+            
+            // Speak only the introduction or response, with asterisks handled
+            speakLimited(textContent);
+        } else {
+            aiChatBox.querySelector(".text").textContent = "No response received.";
+            speakLimited("No response received.");
         }
-        
     } catch (error) {
         console.error("Error fetching API:", error);
         aiChatBox.querySelector(".text").textContent = "Error fetching response.";
-        speak("There was an error fetching the response. Please check the connection.");
+        speakLimited("There was an error fetching the response. Please check the connection.");
     }
 }
+
+function handleYouTubeCommand(command) {
+    // Remove unnecessary words from the command
+    let searchQuery = command
+        .toLowerCase()
+        .replace(/\b(play|youtube|pr|pe|in|on)\b/gi, "") // Remove exact words
+        .replace(/\s+/g, " ") // Remove extra spaces
+        .trim();
+    
+    if (searchQuery) {
+        let youtubeUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(searchQuery)}`;
+        window.open(youtubeUrl, "_blank");
+
+        // Speak only the refined search query
+        speakLimited(`Searching ${searchQuery} on youtube`);
+    } else {
+        speakLimited("Please specify what to search on YouTube.");
+    }
+}
+
+
+
+function speakLimited(text, sentenceLimit = 3) {
+    if (isMuted) return;
+    
+    // Convert asterisks into words
+    text = text.replace(/\*{3}/g, " ").replace(/\*{2}/g, " ").replace(/\*/g, " ");
+    
+    // Split text into sentences
+    const sentences = text.match(/[^.!?]+[.!?]/g) || [text];
+    const limitedText = sentences.slice(0, sentenceLimit).join(" ");
+    
+    // Cancel any ongoing speech before starting new one
+    window.speechSynthesis.cancel();
+    
+    // Speak the limited text
+    const speech = new SpeechSynthesisUtterance(limitedText);
+    speech.rate = 1;
+    speech.pitch = 1;
+    speech.volume = 1;
+    speech.lang = "hi";
+    
+    window.speechSynthesis.speak(speech);
+}
+
+
+function autoScroll() {
+    const chatContainer = document.querySelector(".chat-container");
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+}
+
+
+
 
 
 // Create Chat Box for User/Assistant Messagesx
