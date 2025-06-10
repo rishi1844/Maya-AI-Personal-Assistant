@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>AI Assistant - MAYA</title>
+        <link rel="shortcut icon" href="/img/chatbot.png" type="image/x-icon">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <!-- Login Modal -->
+        <div id="loginModal" class="modal">
+            <div class="modal-content">
+                <h2>Welcome to MAYA</h2>
+                <p>Enter your username to continue</p>
+                <input type="text" id="usernameInput" placeholder="Enter your username" maxlength="20">
+                <button id="loginBtn">Continue</button>
+                <p class="login-note">Your chat history will be saved for this username</p>
+            </div>
+        </div>
+
+        <!-- User Info Display -->
+        <div class="user-info" id="userInfo" style="display: none;">
+            <span id="currentUser"></span>
+            <button id="logoutBtn" title="Switch User">
+                <img src="/img/robot.png" alt="Logout">
+            </button>
+        </div>
+
+        <div class="dashboard">
+            <div class="hamburger" id="hamburger" title="Chat History">
+                <img src="/img/hamburger.png" alt="Menu Icon">
+            </div>
+            <nav class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <h3>Chat History</h3>
+                    <div class="user-display" id="sidebarUser"></div>
+                </div>
+                <ul id="chat-list">
+                    <!-- Chat items will be dynamically added here -->
+                </ul>
+                <button class="new-chat-btn" title="Start New Conversation">
+                    <span>+ New Chat</span>
+                </button>
+                <button class="clear-all-btn" title="Clear All Chat History">
+                    <span>🗑️ Clear All History</span>
+                </button>
+            </nav>
+            <div class="content">
+                <div id="content-output"></div>
+            </div>
+        </div>
+        
+        <div class="chat-container">
+            <!-- Chat messages will be dynamically added here -->
+        </div>        
+
+        <div class="container">
+            <div class="controls">
+                <button id="copyButton" class="control-btn bottom-left" title="Copy Last Response">
+                    <img src="/img/copy.svg" alt="Copy">
+                </button>
+                <button id="muteButton" class="mute-btn" title="Toggle Speech">
+                    <img src="/img/mute1.png" alt="Mute">
+                </button>
+                <button id="clearButton" class="control-btn bottom-right" title="Clear Current Chat">
+                    <img src="/img/clear.svg" alt="Clear">
+                </button>
+            </div>
+
+            <h1>Hi...</h1>
+            <h1>I'm <span id="jr">MAYA</span>, Your <span id="vi">Virtual Assistant</span></h1>
+            <p id="hide">Press the button and say a command</p>
+            <button id="listen-btn" class="btn">
+                <img src="/img/mic.svg" alt="Microphone">
+                <span id="content">Click here to talk to me</span>
+            </button>
+        </div>
+
+        <div class="search-container">
+            <input name="search-bar" type="text" class="search-bar" placeholder="Ask Something..." autocomplete="off">
+            <button class="send-btn" title="Send Message">
+                <img src="/img/send.svg" alt="Send">
+            </button>
+        </div>
+        
+        <script src="script.js"></script>
+    </body>
+</html>

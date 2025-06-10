@@ -1,0 +1,1054 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Protest+Guerrilla&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap');
+
+/* General styles */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url('/img/Ai bot.jpg');
+    color: white;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Login Modal Styles */
+.modal {
+    display: flex;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #0a152f 0%, #1a2f5f 100%);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    transform: scale(0.9);
+    animation: modalSlideIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: scale(0.9) translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-content h2 {
+    color: #fff;
+    font-size: 28px;
+    margin-bottom: 10px;
+    font-family: "Merriweather", serif;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.modal-content p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 16px;
+    margin-bottom: 25px;
+    font-family: "League Spartan", sans-serif;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 16px;
+    font-family: "League Spartan", sans-serif;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.modal-content input:focus {
+    outline: none;
+    border-color: #007bff;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 20px rgba(0, 123, 255, 0.3);
+}
+
+.modal-content input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.modal-content button {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: "League Spartan", sans-serif;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+}
+
+.modal-content button:hover {
+    background: linear-gradient(135deg, #0056b3 0%, #004494 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(0, 123, 255, 0.4);
+}
+
+.modal-content button:active {
+    transform: translateY(0);
+}
+
+.login-note {
+    font-size: 14px !important;
+    color: rgba(255, 255, 255, 0.6) !important;
+    margin-top: 15px !important;
+    margin-bottom: 0 !important;
+    font-style: italic;
+}
+
+/* User Info Display Styles */
+.user-info {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #0a152f;
+    padding: 10px 14px;
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+}
+
+.user-info:hover {
+    background: rgb(7, 8, 29);
+    transform: scale(1.02);
+}
+
+.user-info span {
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    font-family: "League Spartan", sans-serif;
+}
+
+#logoutBtn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    padding: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#logoutBtn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(180deg);
+}
+
+#logoutBtn img {
+    width: 16px;
+    height: 16px;
+    filter: brightness(0) invert(1);
+}
+
+/* Dashboard */
+.dashboard {
+    position: relative;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -320px; /* Initially hidden - increased width */
+    width: 280px; /* Increased width */
+    height: 100vh;
+    background: linear-gradient(135deg, #0a152f 0%, #1a2f5f 100%);
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.3);
+    transition: left 0.3s ease-in-out;
+    padding: 20px;
+    z-index: 1000;
+    overflow-y: auto;
+    border-right: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
+
+.sidebar li {
+    margin: 8px 0;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    padding: 12px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.sidebar li:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
+    transform: translateX(5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar li span {
+    flex-grow: 1;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-right: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.sidebar .new-chat-btn {
+    padding: 15px 20px;
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+    margin-top: 10px;
+}
+
+.sidebar .new-chat-btn:hover {
+    background: linear-gradient(135deg, #0056b3 0%, #004494 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+}
+
+.sidebar .new-chat-btn:active {
+    transform: translateY(0);
+}
+
+.delete-btn {
+    background-color: rgba(255, 0, 0, 0.2);
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
+}
+
+.delete-btn img {
+    width: 16px;
+    height: 16px;
+    filter: brightness(0) invert(1);
+}
+
+.delete-btn:hover {
+    background-color: rgba(255, 0, 0, 0.8);
+    transform: scale(1.1);
+    box-shadow: 0 2px 10px rgba(255, 0, 0, 0.3);
+}
+
+/* Open Sidebar */
+.sidebar.open {
+    left: 0;
+}
+
+.hamburger {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+    cursor: pointer;
+    background: #0a152f;
+    padding: 8px;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.hamburger:hover {
+    background: rgba(4, 2, 24, 0.9);
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.hamburger img {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) invert(1);
+}
+
+/* Sidebar header styles */
+.sidebar-header {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+}
+
+.sidebar-header h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    opacity: 0.9;
+    margin: 0 0 10px 0;
+    font-family: "Merriweather", serif;
+}
+
+.user-display {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 12px;
+    border-radius: 15px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: "League Spartan", sans-serif;
+    font-weight: 500;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+/* Clear All History Button */
+.clear-all-btn {
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+    margin-top: 10px;
+    font-family: "League Spartan", sans-serif;
+}
+
+.clear-all-btn:hover {
+    background: linear-gradient(135deg, #c82333 0%, #a71e2a 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4);
+}
+
+.clear-all-btn:active {
+    transform: translateY(0);
+}
+
+/* Chat container styles */
+.chat-container {
+    width: 75%;
+    max-width: 840px;
+    height: 46%;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.09);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    scroll-behavior: smooth;
+    position: relative;
+    text-align: justify;
+    padding: 10px;
+}
+
+.chat-container h3 {
+    margin: 10px 0px 15px 0px;
+}
+
+.chat-container::-webkit-scrollbar {
+    display: none; 
+}
+
+/* Hide scrollbar for Firefox */
+.chat-container {
+    scrollbar-width: none; /* Firefox-specific property */
+}
+
+/* For Edge and other browsers */
+.chat-container {
+    -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+}
+
+.ai-chat-box {
+    padding: 12px 16px;
+    background-color: rgba(14, 14, 14, 0.9);
+    border-radius: 15px 15px 15px 5px;
+    word-wrap: break-word;
+    width: fit-content;
+    max-width: 85%;
+    box-sizing: border-box;
+    margin: 5px 0 10px 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.user-chat-box {
+    padding: 12px 16px;
+    margin: 5px 0 10px auto;
+    border-radius: 15px 15px 5px 15px;
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    color: white;
+    word-wrap: break-word;
+    width: fit-content;
+    max-width: 85%;
+    box-sizing: border-box;
+    margin-left: auto;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.text {
+    color: #ffffff;
+    font-style: normal;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.user-chat-box .text {
+    color: #ffffff;
+    font-weight: 500;
+}
+
+/* Controls styles */
+.controls {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.controls button {
+    padding: 12px;
+    border: none;
+    background: linear-gradient(135deg, #0d124b 0%, #1a2f5f 100%);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.mute-btn {
+    padding: 12px;
+    border: none;
+    background: linear-gradient(135deg, #0d124b 0%, #1a2f5f 100%);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.controls button:hover,
+.mute-btn:hover {
+    background: linear-gradient(135deg, #1a2f5f 0%, #2a4f8f 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.controls button img,
+.mute-btn img {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) invert(1);
+}
+
+/* Container styles */
+.container {
+    width: 70%;
+    max-width: 800px;
+    padding: 20px;
+    margin: 20px 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container h1 {
+    font-size: 22px;
+    font-family: "Merriweather", serif;
+    text-shadow: 1.5px 1.5px #000000;
+}
+
+#jr {
+    color: rgb(212, 43, 122);
+    font-size: 37px;
+    text-shadow: 
+        0 0 2px #0033fe,   /* Soft blue glow */
+        0 0 2px #4abcf4,   /* Light cyan glow */
+        2px 2px 10px #6a1ef8;   /* Soft white glow for a more subtle effect */
+}
+
+#vi {
+    color: rgb(43, 206, 212);
+    font-size: 37px;
+}
+
+.container p {
+    font-family: "League Spartan", serif;
+    font-size: 22px;
+    color: rgb(17, 255, 0);
+    text-shadow: 1px 1px rgb(0, 0, 0);
+    font-size: 20px;
+    animation: blink 3s ease-in-out infinite;
+}
+
+.container #voice {
+    width: 250px;
+    height: 250px;
+    background: transparent;
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+.btn {
+    display: inline-flex;
+    width: 60%;
+    background: linear-gradient(to right, rgb(49, 121, 157), rgb(164, 43, 99));
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 18px;
+    border-radius: 22px;
+    color: white;
+    border: none;
+    box-shadow: 2px 2px 10px rgb(41, 85, 107), 2px 2px 10px rgb(122, 50, 84);
+    margin-top: 10px;
+    transition: all 0.5s;
+}
+
+.btn:hover {
+    box-shadow: 2px 2px 10px rgb(201, 41, 116), 2px 2px 10px rgb(21, 145, 207);
+    letter-spacing: 3px;
+    cursor: pointer;
+}
+
+.listening {
+    animation: pulse 1s infinite;
+    background-color: #FF6347;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.notification {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.notification.hide {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+}
+
+/* Search container styles */
+.search-container {
+    width: 70%;
+    max-width: 800px;
+    height: auto; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid transparent;
+    border-radius: 30px 20px 20px 30px; 
+    padding: 5px 15px; 
+    background-color: rgba(0, 0, 0, 0.8); 
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+    transition: none; 
+}
+
+.search-bar {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 5px;
+    margin-right: 10px;
+    background-color: transparent;
+    color: #aaaaaa;
+    transition: box-shadow 0.3s ease;
+    font-family: monospace;
+}
+
+.send-btn {
+    background-color: rgb(75, 197, 211);
+    color: white;
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.send-btn:hover {
+    background-color: rgb(5, 167, 255);
+    box-shadow: 0 0 10px rgb(47, 248, 225);
+}
+
+.send-btn:active {
+    transform: scale(0.98);
+}
+
+/* Footer Styling */
+.footer {
+    position: fixed;
+    bottom: 0px;
+    background-color: #242424fa;
+    color: #fff;
+    font-size: 10px;
+    text-align: center;
+    align-items: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Footer Links Styling */
+.footer-links {
+    display: flex;
+}
+
+.footer-links img {
+    width: 20px;
+    height: 20px;
+    color: #fff;
+    text-decoration: none;
+    margin: 0 12px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+
+/* Styling for "Made by" text */
+.footer strong {
+    font-size: 12px;
+    font-family: "Merriweather", serif;
+    font-style: italic;
+}
+
+.footer span {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+/* Responsive design */
+@media (max-width: 1500px) {
+    .search-container {
+        margin-bottom: 5px;
+    }
+}
+
+/* Tablets and small desktops */
+@media (max-width: 768px) {
+    body {
+        height: 110vh;
+    }
+
+    .sidebar {
+        width: 260px;
+        left: -290px;
+    }
+
+    .hamburger {
+        top: 15px;
+        left: 15px;
+        padding: 8px;
+    }
+
+    .hamburger img {
+        width: 16px;
+        height: 16px;
+    }
+
+    .sidebar li,
+    .sidebar .new-chat-btn {
+        font-size: 13px;
+    }
+
+    .chat-container {
+        width: 85%;
+        height: 40%;
+    }
+
+    .text {
+        font-size: 1rem;
+    }
+
+    .search-container {
+        width: 85%;
+        flex-direction: column;
+        align-items: stretch;
+        border-radius: 20px;
+        padding: 15px;
+    }
+
+    .btn {
+        width: 70%;
+        padding: 8px;
+        font-size: 16px;
+    }
+
+    .container {
+        width: 85%;
+        height: 225px;
+        margin-top: 21px;
+    }
+
+    .container h1 {
+        font-size: 18px;
+    }
+
+    span#jr, span#vi {
+        font-size: 28px;
+    }
+
+    .controls button,
+    .mute-btn {
+        padding: 10px;
+    }
+
+    .user-info {
+        top: 15px;
+        right: 15px;
+        padding: 8px 12px;
+    }
+
+    .user-info span {
+        font-size: 11px;
+    }
+}
+
+/* Smaller tablets and large phones */
+@media (max-width: 590px) {
+    body {
+        height: 100vh;
+    }
+
+    .sidebar {
+        width: 240px;
+        left: -270px;
+    }
+
+    .chat-container {
+        height: 45%;
+        width: 90%;
+    }
+
+    .container {
+        width: 90%;
+        padding: 15px;
+        margin-top: 10px;
+    }
+
+    .container h1 {
+        font-size: 16px;
+    }
+
+    span#jr, span#vi {
+        font-size: 24px;
+    }
+
+    .btn {
+        width: 80%;
+        margin-top: 10px;
+    }
+
+    .search-container {
+        width: 90%;
+        flex-direction: column;
+        align-items: stretch;
+        border-radius: 20px;
+        padding: 15px;
+    }
+
+    .search-bar {
+        margin-bottom: 10px;
+        font-size: 16px;
+    }
+
+    .send-btn {
+        padding: 12px 15px;
+    }
+
+    .controls {
+        gap: 20px;
+        justify-content: space-evenly;
+    }
+
+    .footer {
+        display: none;
+    }
+}
+
+/* Mobile screens */
+@media (max-width: 480px) {
+    .sidebar {
+        width: 220px;
+        left: -250px;
+    }
+
+    .hamburger {
+        top: 10px;
+        left: 10px;
+        padding: 8px;
+    }
+
+    .hamburger img {
+        width: 18px;
+        height: 18px;
+    }
+
+    .sidebar li,
+    .sidebar .new-chat-btn {
+        font-size: 12px;
+        padding: 10px 12px;
+    }
+
+    .chat-container {
+        height: 45%;
+        width: 95%;
+    }
+
+    .container h1 {
+        font-size: 15px;
+    }
+
+    span#jr, span#vi {
+        font-size: 20px;
+    }
+
+    .btn {
+        width: 85%;
+        font-size: 14px;
+    }
+
+    .controls button,
+    .mute-btn {
+        padding: 8px;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 360px) {
+    body {
+        height: 130vh;
+    }
+
+    .sidebar {
+        width: 200px;
+        left: -230px;
+    }
+
+    .chat-container {
+        height: 35%;
+        width: 95%;
+        font-size: 0.9rem;
+    }
+
+    .text {
+        font-size: 0.95rem;
+    }
+
+    .container {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .container h1 {
+        font-size: 14px;
+    }
+
+    span#jr, span#vi {
+        font-size: 18px;
+    }
+
+    .container p {
+        font-size: 15px;
+    }
+
+    .btn {
+        width: 90%;
+        font-size: 13px;
+    }
+
+    .search-container {
+        width: 90%;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .search-bar {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    .send-btn {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+
+    .notification {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+
+    .footer {
+        display: none;
+    }
+}
+
+/* Responsive design for login modal */
+@media (max-width: 480px) {
+    .modal-content {
+        padding: 30px 20px;
+        max-width: 350px;
+        margin: 0 20px;
+    }
+
+    .modal-content h2 {
+        font-size: 24px;
+    }
+
+    .modal-content input,
+    .modal-content button {
+        font-size: 16px;
+    }
+
+    .user-info {
+        top: 15px;
+        right: 15px;
+        padding: 10px 14px;
+    }
+
+    .user-info span {
+        font-size: 13px;
+    }
+
+    #logoutBtn {
+        padding: 6px;
+    }
+
+    #logoutBtn img {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+@media (max-width: 360px) {
+    .modal-content {
+        padding: 25px 15px;
+        max-width: 320px;
+    }
+
+    .modal-content h2 {
+        font-size: 22px;
+    }
+
+    .user-info {
+        top: 10px;
+        right: 10px;
+        padding: 8px 12px;
+    }
+}
